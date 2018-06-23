@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/2018/06/23/hello-world/</loc>
+    <lastmod>2018-06-23T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/page/about/</loc>
+    <lastmod>2018-06-20T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/</loc>
+    <lastmod>2018-06-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/categories/announcements/</loc>
+    <lastmod>2018-06-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/archives/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/categories/</loc>
+    <lastmod>2018-06-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/tags/first-post/</loc>
+    <lastmod>2018-06-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/tags/init/</loc>
+    <lastmod>2018-06-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/page/</loc>
+    <lastmod>2018-06-20T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/post/</loc>
+    <lastmod>2018-06-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/tags/</loc>
+    <lastmod>2018-06-23T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+</urlset>
