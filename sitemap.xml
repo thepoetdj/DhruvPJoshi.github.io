@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://DhruvPJoshi.github.io/2018/11/18/easy-install-java-on-linux/</loc>
+    <lastmod>2018-11-18T12:20:14+05:30</lastmod>
+  </url>
+  
+  <url>
     <loc>https://DhruvPJoshi.github.io/2018/10/06/became-a-published-author-with-whispering-solitude/</loc>
     <lastmod>2018-10-06T00:00:00+00:00</lastmod>
   </url>
@@ -19,7 +24,7 @@
   
   <url>
     <loc>https://DhruvPJoshi.github.io/</loc>
-    <lastmod>2018-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-18T12:20:14+05:30</lastmod>
     <priority>0</priority>
   </url>
   
@@ -47,6 +52,12 @@
   </url>
   
   <url>
+    <loc>https://DhruvPJoshi.github.io/categories/easyinstall/</loc>
+    <lastmod>2018-11-18T12:20:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://DhruvPJoshi.github.io/tags/first-post/</loc>
     <lastmod>2018-06-23T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -59,6 +70,24 @@
   </url>
   
   <url>
+    <loc>https://DhruvPJoshi.github.io/tags/java/</loc>
+    <lastmod>2018-11-18T12:20:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/tags/jdk/</loc>
+    <lastmod>2018-11-18T12:20:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/tags/linux/</loc>
+    <lastmod>2018-11-18T12:20:14+05:30</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://DhruvPJoshi.github.io/page/</loc>
     <lastmod>2018-06-20T00:00:00+00:00</lastmod>
     <priority>0</priority>
@@ -66,13 +95,19 @@
   
   <url>
     <loc>https://DhruvPJoshi.github.io/post/</loc>
-    <lastmod>2018-10-06T00:00:00+00:00</lastmod>
+    <lastmod>2018-11-18T12:20:14+05:30</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://DhruvPJoshi.github.io/tags/publishing/</loc>
     <lastmod>2018-10-06T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://DhruvPJoshi.github.io/tags/sdkman/</loc>
+    <lastmod>2018-11-18T12:20:14+05:30</lastmod>
     <priority>0</priority>
   </url>
   
