@@ -20,25 +20,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Hugo 0.48 with theme Tranquilpeak 0.4.3-BETA">
-    <title>Easy Install: Java on Linux</title>
+    <title>FFmpeg Audio Video Sync</title>
     <meta name="author" content="Dhruv Joshi">
-    <meta name="keywords" content="install java on linux, manage multiple java versions on linux, manage multiple versions of java, sdkman java installation, sdkman to install java">
+    <meta name="keywords" content="ffmpeg audio sync, audio synchronization with ffmpeg, command-line audio synchronization">
 
     <link rel="icon" href="https://DhruvPJoshi.github.io/favicon-new.ico">
     
 
     
-    <meta name="description" content="Are you a Java developer, looking for a hassle-free way to use multiple versions of Java, without ever having to interact with the JAVA_HOME variable? Well, look no further.
+    <meta name="description" content="Last night, I came across a media file in which audio playback was way behind the original video. So, to resolve the issue, I took the liberty of getting my hands dirty with ffmpeg, instead of using a media player.
 ">
-    <meta property="og:description" content="Are you a Java developer, looking for a hassle-free way to use multiple versions of Java, without ever having to interact with the JAVA_HOME variable? Well, look no further.
+    <meta property="og:description" content="Last night, I came across a media file in which audio playback was way behind the original video. So, to resolve the issue, I took the liberty of getting my hands dirty with ffmpeg, instead of using a media player.
 ">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Easy Install: Java on Linux">
-    <meta property="og:url" content="/2018/11/18/easy-install-java-on-linux/">
+    <meta property="og:title" content="FFmpeg Audio Video Sync">
+    <meta property="og:url" content="/2019/10/19/ffmpeg-audio-video-sync/">
     <meta property="og:site_name" content="/home/dhruv-joshi">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="/home/dhruv-joshi">
-    <meta name="twitter:description" content="Are you a Java developer, looking for a hassle-free way to use multiple versions of Java, without ever having to interact with the JAVA_HOME variable? Well, look no further.
+    <meta name="twitter:description" content="Last night, I came across a media file in which audio playback was way behind the original video. So, to resolve the issue, I took the liberty of getting my hands dirty with ffmpeg, instead of using a media player.
 ">
     
     
@@ -51,10 +51,10 @@
     
 
     
-      <meta property="og:image" content="https://DhruvPJoshi.github.io/images/java_logo.png">
+      <meta property="og:image" content="https://DhruvPJoshi.github.io/images/ffmpeg_logo.jpg">
     
     
-      <meta property="og:image" content="https://DhruvPJoshi.github.io/images/java_logo.png">
+      <meta property="og:image" content="https://DhruvPJoshi.github.io/images/wave_abstract.jpg">
     
     
 
@@ -244,25 +244,25 @@
   <div class="post-header-cover
               text-left
               "
-       style="background-image:url('/images/java_logo.png')"
+       style="background-image:url('/images/wave_abstract.jpg')"
        data-behavior="4">
     
       <div class="post-header main-content-wrap text-left">
   
     <h1 class="post-title" itemprop="headline">
-      Easy Install: Java on Linux
+      FFmpeg Audio Video Sync
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time itemprop="datePublished" datetime="2018-11-18T12:20:14&#43;05:30">
+      <time itemprop="datePublished" datetime="2019-10-19T20:39:02&#43;05:30">
         
   
   
   
   
-    18 November, 2018
+    19 October, 2019
   
 
       </time>
@@ -272,7 +272,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://DhruvPJoshi.github.io/categories/easyinstall">EasyInstall</a>
+      <a class="category-link" href="https://DhruvPJoshi.github.io/categories/multimedia">Multimedia</a>
     
   
 
@@ -292,136 +292,194 @@
           
           <div class="post-content markdown" itemprop="articleBody">
             <div class="main-content-wrap">
-              <p>Are you a Java developer, looking for a hassle-free way to use multiple versions of Java, without ever having to interact with the <code>JAVA_HOME</code> variable? Well, look no further.
+              <p>Last night, I came across a media file in which audio playback was way behind the original video. So, to resolve the issue, I took the liberty of getting my hands dirty with <em>ffmpeg</em>, instead of using a media player.
 </p>
 
 <h1 id="table-of-contents">Table of Contents</h1><nav id="TableOfContents">
 <ul>
-<li><a href="#introducing-sdkman">Introducing SDKMAN!</a>
+<li><a href="#fetching-media-information">Fetching Media Information</a>
 <ul>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#packages">Packages</a></li>
+<li><a href="#exploring-the-media-streams">Exploring the Media Streams</a></li>
+<li><a href="#set-media-offset">Set Media Offset</a></li>
 </ul></li>
-<li><a href="#installing-java">Installing Java</a>
+<li><a href="#media-stream-mappings">Media Stream Mappings</a></li>
+<li><a href="#exporting">Exporting</a></li>
+<li><a href="#bonus">Bonus</a>
 <ul>
-<li><a href="#multiple-versions">Multiple Versions</a></li>
-<li><a href="#switch-versions">Switch Versions</a></li>
-<li><a href="#uninstall">Uninstall</a></li>
+<li><a href="#skip-re-encoding">Skip Re-Encoding</a></li>
+<li><a href="#convert-media-format">Convert Media Format</a></li>
 </ul></li>
-<li><a href="#conculusion">Conculusion</a></li>
+<li><a href="#attributions">Attributions</a></li>
 </ul>
 </nav>
 
-<h1 id="introducing-sdkman">Introducing SDKMAN!</h1>
-
-<p>From the official site:</p>
+<p>For those unaware of what <a href="https://www.ffmpeg.org/">FFmpeg</a> is:</p>
 
 <blockquote>
-<p><a href="https://sdkman.io">SDKMAN!</a> is a tool for managing parallel versions of multiple Software Development Kits on most Unix based systems.</p>
+<p>FFmpeg is the leading multimedia framework, able to <strong>decode</strong>, <strong>encode</strong>, <strong>transcode</strong>, <strong>mux</strong>, <strong>demux</strong>, <strong>stream</strong>, <strong>filter</strong> and <strong>play</strong> pretty much anything that humans and machines have created.</p>
 </blockquote>
 
-<p>Yes. You read it correct. With the <acronym title="Command Line Interface">CLI</acronym> provided by SDKMAN!, you can install multiple versions of your favourite <acronym title="Software Development Kit">SDK</acronym> (not just JDK), on your favourite *nix based system!</p>
+<p>To put it in simple words, ffmpeg not only allows you to stream audio and video, but also enables you to convert and record them.</p>
 
-<h2 id="installation">Installation</h2>
+<p>So, as I mentioned at the beginning of the post, the media file I was playing had a delayed audio of about 15 seconds. Yikes!</p>
 
-<p>Installing it is as easy as executing below command in the terminal:</p>
+<p>Normally you could use your favorite media player to resolve such issues. For instance, you can specify the number of seconds in the <em>&ldquo;Track Synchronization&rdquo;</em> tool of VLC media player to delay/hasten the audio. However, such large synchronizations on a low spec machine often results in a no-audio playback. Even increased file caching has no effects. Besides, I was looking for a rather permanent solution.</p>
 
-<pre><code>$ curl -s &quot;https://get.sdkman.io&quot; | bash
-</code></pre>
+<h1 id="fetching-media-information">Fetching Media Information</h1>
 
 <div class="alert info ">
-  <p><p>By default, the CLI is installed under <code>$HOME/.sdkman/</code> directory.</p>
+  <p><p><strong>Note:</strong> Though I won&rsquo;t be telling you how to intall FFmpeg on your system, you can go to the official <a href="https://ffmpeg.org/download.html">downloads</a> page and follow your platform specific instructions to do the same.</p>
 
-<p>If you want to use a custom directory for the installation, let&rsquo;s say <code>/Desktop/sdkman/</code>, then execute the following command:</p>
+<p>Once installed, run the following command to verify your installation:</p>
 
-<pre><code>$ export SDKMAN_DIR=&quot;/Desktop/sdkman&quot; &amp;&amp; curl -s &quot;https://get.sdkman.io&quot; | bash
+<pre><code>$ ffmpeg -version
 </code></pre>
-
-<p>For the above command to succeed, make sure that the folder <em>sdkman</em> <strong>does not exist</strong>.</p>
 </p>
 </div>
 
-<p>Confirm the installation by checking out the installed version. If you get <span class="highlight-text danger">command not found</span>, exit and start a new terminal session.</p>
+<p>The first thing required is to get the track information of the media file. For that, you use the following command:</p>
 
-<pre><code>$ sdk version
+<pre><code>$ ffmpeg -i input_file.mkv
 </code></pre>
 
-<h2 id="packages">Packages</h2>
+<p><code>-i</code> stands for the input file flag. The resulting output will contain a lot of information, out of which, following are some of the important ones:</p>
 
-<p>As mentioned before, the <code>sdk</code> command allows us to install various development tools. &lsquo;Which SDK tools are available?&rsquo; you may ask. Following command tells you exactly that:</p>
-
-<pre><code>$ sdk list
+<pre><code>Input #0, matroska,webm, from input_file.mkv:
+...
+Stream #0:0: Video: hevc (Main), yuv420p(tv), 1280x720 [SAR 1:1 DAR 16:9], 23.98 fps, 23.98 tbr, 1k tbn, 23.98 tbc (default)
+...
+Stream #0:1(eng): Audio: opus, 48000 Hz, stereo, fltp (default)
+...
+...
+Stream #0:3(eng): Subtitle: ass (default)
 </code></pre>
 
-<p>While various JVM based languages including <em>Java</em>, <em>Groovy</em>, <em>Kotlin</em> and, <em>Scala</em> are there; don&rsquo;t get surprised if you see one of your favourite frameworks (<em>Spring Boot</em>, <em>Vert.x</em> or <em>Micronaut</em>) among the list! Some of the popular build tools (<em>Ant</em>, <em>Gradle</em> and <em>Maven</em>) are also included.</p>
+<h2 id="exploring-the-media-streams">Exploring the Media Streams</h2>
 
-<p>Now then, back to our main objective&hellip;</p>
+<p>You can tell the common stream format from the above result as follows:</p>
 
-<h1 id="installing-java">Installing Java</h1>
+<p>Stream <em>#infile_index:stream_index</em></p>
 
-<p>Previous command gave us a list of all available SDKs, and we know that most of them have multiple versions available. What if we want to know exactly which versions of a particular language or framework or build tool are available?</p>
+<p>Since we specified only single input file, the <em>infile_index</em> returned is <code>0</code>. What if we tried the same command with two input files? Let&rsquo;s try that:</p>
 
-<p>That is as easy as passing the name of that SDK:</p>
-
-<pre><code>$ sdk list java
+<pre><code>$ ffmpeg -i input_file.mkv -i input_file.mkv
 </code></pre>
 
-<p>You&rsquo;ll see a list of Java versions available for install through the <code>sdk</code> command.</p>
+<p>You will see following additional information in the result:</p>
 
-<p>To install a particular version, pass in that version signature to the following command (replacing {javaVersion}):</p>
-
-<pre><code>$ sdk install java {javaVersion}
+<pre><code>...
+Input #1, matroska,webm, from input_file.mkv:
+...
+Stream #1:0: Video: hevc (Main), yuv420p(tv), 1280x720 [SAR 1:1 DAR 16:9], 23.98 fps, 23.98 tbr, 1k tbn, 23.98 tbc (default)
+...
+Stream #1:1(eng): Audio: opus, 48000 Hz, stereo, fltp (default)
 </code></pre>
 
-<p>Now sit back and relax. The Java package will get downloaded, installed and the <code>JAVA_HOME</code> will be set to this particular version, automatically!</p>
+<p>You would have noticed that the <em>Stream #</em> is different for both inputs. Did you also notice that I specified the same media file twice? Yes. It is perfectly valid.</p>
 
-<h2 id="multiple-versions">Multiple Versions</h2>
+<div class="alert info ">
+  <p>When the media file has multiple audio tracks, they will be specified together with the stream information, i.e. <code>Stream #0:1(eng)</code></p>
+</div>
 
-<p>Assume that for some reason you have to use Java 7. Let&rsquo;s use <code>sdk</code> to install the same.</p>
+<h2 id="set-media-offset">Set Media Offset</h2>
 
-<p>Check the version signature of Java 7 using <code>sdk list java</code> and install it with <code>sdk install java {java7Version}</code>. This is where things get interesting.</p>
+<p>Now that we know of the media files&rsquo; streams, our next step would be to change the offset of audio stream (we must not go astray from our original goal). To change the offset, following command is used:</p>
 
-<p>Since we already had a Java version installed earlier, SDKMAN! will take a note of that and after installation, will ask you <strong>whether you want this version to be set as default</strong> or not. If you say &lsquo;yes&rsquo;, then the <em>default version will be set to newly installed one</em> (Java 7)! Pretty cool, isn&rsquo;t it?</p>
-
-<p>Let&rsquo;s verify the current version of Java installation:</p>
-
-<pre><code>$ sdk current java
+<pre><code>$ ffmpeg -itsoffset N -i input_file.mkv
 </code></pre>
 
-<p>You&rsquo;ll see version 7 as your currently used one.</p>
-
-<h2 id="switch-versions">Switch Versions</h2>
-
-<p>Since we have two different versions of Java installed, what if we want to switch between them? SDKMAN! also has answer for that!</p>
-
-<p>Know that there are two approaches for switching versions:</p>
+<p>The <code>-itsoffset</code> flag <strong>delays/hastens the whole input file.</strong> Here <code>N</code> stands for the number of seconds that should be delayed/hastened. Fractional values are also allowed. Although, you have to consider the following when changing the offset:</p>
 
 <ol>
-<li><p>For current terminal session only</p>
-
-<pre><code>$ sdk use java {javaVersion}
-</code></pre></li>
-
-<li><p>Switch globally</p>
-
-<pre><code>$ sdk default java {javaVersion}
-</code></pre></li>
+<li>A positive value of N delays the stream</li>
+<li>A negative value of N hastens the stream</li>
 </ol>
 
-<p>You can verify the version changes using <code>java -version</code> and <code>javac -version</code> command.</p>
+<p>Here is where we hit our milestone: <em>&ldquo;How to hasten the audio of media file by 15 seconds?&rdquo;</em></p>
 
-<h2 id="uninstall">Uninstall</h2>
+<p>The command to do the same is as follows:</p>
 
-<p>When your favourite SDK becomes outdated or is not longer used, we have to get rid of it, to give that HDD of ours some space to stretch into. You can do that with ease using <code>sdk</code>:</p>
-
-<pre><code>$ sdk uninstall &lt;sdk&gt; {sdkVersion}
+<pre><code>$ ffmpeg -i input_file.mkv -itsoffset -15 -i input_file.mkv
 </code></pre>
 
-<p>You can follow the same approach to install any other SDK. Just learn which version you want and install it with <code>sdk</code>. And when the time comes to use parallel versions of your favourite SDK, you know what to do.</p>
+<p>But wait. The above command would result in nothing! <em>Why?</em> Because, we haven&rsquo;t told ffmpeg which stream from which input file should be hastened i.e. Stream #1:1</p>
 
-<h1 id="conculusion">Conculusion</h1>
+<p>How do we do that?</p>
 
-<p>SDKMAN! is an interesting command-line client. It not only provides a way to easily install one of the many provided SDKs, but also makes it easier to use and switch between parallel versions of a same. It is pretty good at cleanup too.</p>
+<h1 id="media-stream-mappings">Media Stream Mappings</h1>
+
+<p>As we know that the streams are of format <em>#infile_index:stream_index</em>. We can use this at our advantage and tell ffmpeg which input file&rsquo;s stream to apply the offset to. Let me make this easier to understand:</p>
+
+<p>Our goal is to hasten the audio of the media file only, not the video. The video stream should be kept as it is. To achieve this, we have a <code>-map</code> flag, that tells ffmpeg which stream of the input file should be exported to the output file. A command will make things more clear:</p>
+
+<pre><code>$ ffmpeg -i input_file.mkv -itsoffset -15 -i input_file.mkv -map 0:0 -map 1:1
+</code></pre>
+
+<p>In the above command, I have specified two mappings:</p>
+
+<ol>
+<li><code>-map 0:0</code>: Video stream of the 1st input file (without offset)</li>
+<li><code>-map 1:1</code>: Audio stream of the 2nd input file (with offset of -15 secs)</li>
+</ol>
+
+<p>You must be wondering, <em>&ldquo;Why do we have to do this mapping?&rdquo;</em> The answer, as I mentioned earlier, is because the <code>-itsoffset</code> flag offsets the whole input file.</p>
+
+<h1 id="exporting">Exporting</h1>
+
+<p>We are almost done at this point. We found out:</p>
+
+<ul>
+<li>which streams are present in our media file, <code>-i</code></li>
+<li>how to hasten the audio stream, <code>-itsoffset</code></li>
+<li>how to tell ffmpeg which stream to apply offset to, <code>-map</code></li>
+</ul>
+
+<p>Now all that remains is to export the output to a file. This is done by passing the name of the output file at the end of whole command:</p>
+
+<pre><code>$ ffmpeg -i input_file.mkv -itsoffset -15 -i input_file.mkv -map 0:0 -map 1:1 output_file.mkv
+</code></pre>
+
+<p>It might take some time, few seconds to few minutes (depending on input media size), to export the file. On successful completion, you will see the <em>output_file.mkv</em> in your working directory, <strong>with synchronized audio.</strong></p>
+
+<p>Video synchronization works in a similar way. Just choose the video stream mapping of the offset media file and you are good to go.</p>
+
+<h1 id="bonus">Bonus</h1>
+
+<h2 id="skip-re-encoding">Skip Re-Encoding</h2>
+
+<p>By default, ffmpeg will try to perform re-encoding on both the video and audio streams of the input media before exporting the final result, which is a time consuming task.</p>
+
+<p>What if we want to skip this re-encoding process? It can be done using following flags:</p>
+
+<ul>
+<li><code>-acodec copy</code>: do not re-encode, just copy the audio stream</li>
+<li><code>-vcodec copy</code>: do not re-encode, just copy the video stream</li>
+</ul>
+
+<p>So, the final command would be something like this:</p>
+
+<pre><code>$ ffmpeg -i input_file.mkv -itsoffset -15 -i input_file.mkv -map 0:0 -map 1:1 -acodec copy -vcodec copy output_file.mkv
+</code></pre>
+
+<h2 id="convert-media-format">Convert Media Format</h2>
+
+<p>As metioned at the beginning, ffmpeg can be used to convert the file formats. So, What if want the output of our media to be in different format?</p>
+
+<p>It is possible. However, <strong>in such case, the re-encoding phase cannot be skipped,</strong> since the codec information will be different for both the input and the output files.</p>
+
+<p>To convert the format, just change the extension of the output file and you are good to go:</p>
+
+<pre><code>$ ffmpeg -i input_file.mkv -itsoffset -15 -i input_file.mkv -map 0:0 -map 1:1 output_file.avi
+</code></pre>
+
+<p>Hope you learned something interesting. Thank you for reading. See you soon.</p>
+
+<h1 id="attributions">Attributions</h1>
+
+<ul>
+<li>Thumbnail <a href="https://icon-library.net/icon/ffmpeg-icon-17.html">Image</a></li>
+<li>Cover image background vector created by <a href="https://www.freepik.com/free-photos-vectors/background">pikisuperstar</a></li>
+</ul>
               
             </div>
           </div>
@@ -433,13 +491,11 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://DhruvPJoshi.github.io/tags/java/">java</a>
+  <a class="tag tag--primary tag--small" href="https://DhruvPJoshi.github.io/tags/cli/">cli</a>
 
-  <a class="tag tag--primary tag--small" href="https://DhruvPJoshi.github.io/tags/jdk/">jdk</a>
+  <a class="tag tag--primary tag--small" href="https://DhruvPJoshi.github.io/tags/ffmpeg/">ffmpeg</a>
 
-  <a class="tag tag--primary tag--small" href="https://DhruvPJoshi.github.io/tags/sdkman/">sdkman</a>
-
-  <a class="tag tag--primary tag--small" href="https://DhruvPJoshi.github.io/tags/linux/">linux</a>
+  <a class="tag tag--primary tag--small" href="https://DhruvPJoshi.github.io/tags/multimedia/">multimedia</a>
 
                   </div>
                 
@@ -452,7 +508,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://DhruvPJoshi.github.io/2018/10/06/became-a-published-author-with-whispering-solitude/" data-tooltip="Became a Published Author with &#34;Whispering Solitude&#34;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://DhruvPJoshi.github.io/2018/11/18/easy-install-java-on-linux/" data-tooltip="Easy Install: Java on Linux">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -460,7 +516,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://DhruvPJoshi.github.io/2019/10/19/ffmpeg-audio-video-sync/" data-tooltip="FFmpeg Audio Video Sync">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                   <i class="fa fa-angle-right"></i>
@@ -478,19 +534,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://DhruvPJoshi.github.io/2018/11/18/easy-install-java-on-linux/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://DhruvPJoshi.github.io/2019/10/19/ffmpeg-audio-video-sync/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://DhruvPJoshi.github.io/2018/11/18/easy-install-java-on-linux/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://DhruvPJoshi.github.io/2019/10/19/ffmpeg-audio-video-sync/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://DhruvPJoshi.github.io/2018/11/18/easy-install-java-on-linux/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://DhruvPJoshi.github.io/2019/10/19/ffmpeg-audio-video-sync/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -538,7 +594,7 @@
           
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://DhruvPJoshi.github.io/2018/10/06/became-a-published-author-with-whispering-solitude/" data-tooltip="Became a Published Author with &#34;Whispering Solitude&#34;">
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://DhruvPJoshi.github.io/2018/11/18/easy-install-java-on-linux/" data-tooltip="Easy Install: Java on Linux">
               
                   <i class="fa fa-angle-left"></i>
                   <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -546,7 +602,7 @@
             </li>
             <li class="post-action">
               
-                <a class="post-action-btn btn btn--default tooltip--top" href="https://DhruvPJoshi.github.io/2019/10/19/ffmpeg-audio-video-sync/" data-tooltip="FFmpeg Audio Video Sync">
+                <a class="post-action-btn btn btn--disabled">
               
                   <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
                   <i class="fa fa-angle-right"></i>
@@ -564,19 +620,19 @@
         </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://DhruvPJoshi.github.io/2018/11/18/easy-install-java-on-linux/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://DhruvPJoshi.github.io/2019/10/19/ffmpeg-audio-video-sync/">
               <i class="fa fa-facebook-official"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://DhruvPJoshi.github.io/2018/11/18/easy-install-java-on-linux/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://DhruvPJoshi.github.io/2019/10/19/ffmpeg-audio-video-sync/">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
         
           <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://DhruvPJoshi.github.io/2018/11/18/easy-install-java-on-linux/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://DhruvPJoshi.github.io/2019/10/19/ffmpeg-audio-video-sync/">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -606,19 +662,19 @@
   <ul class="share-options">
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FDhruvPJoshi.github.io%2F2018%2F11%2F18%2Feasy-install-java-on-linux%2F">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FDhruvPJoshi.github.io%2F2019%2F10%2F19%2Fffmpeg-audio-video-sync%2F">
           <i class="fa fa-facebook-official"></i><span>Share on Facebook</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2FDhruvPJoshi.github.io%2F2018%2F11%2F18%2Feasy-install-java-on-linux%2F">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2FDhruvPJoshi.github.io%2F2019%2F10%2F19%2Fffmpeg-audio-video-sync%2F">
           <i class="fa fa-twitter"></i><span>Share on Twitter</span>
         </a>
       </li>
     
       <li class="share-option">
-        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2FDhruvPJoshi.github.io%2F2018%2F11%2F18%2Feasy-install-java-on-linux%2F">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2FDhruvPJoshi.github.io%2F2019%2F10%2F19%2Fffmpeg-audio-video-sync%2F">
           <i class="fa fa-google-plus"></i><span>Share on Google&#43;</span>
         </a>
       </li>
@@ -796,9 +852,9 @@ $(document).ready(function() {
     
       <script>
         var disqus_config = function () {
-          this.page.url = 'https:\/\/DhruvPJoshi.github.io\/2018\/11\/18\/easy-install-java-on-linux\/';
+          this.page.url = 'https:\/\/DhruvPJoshi.github.io\/2019\/10\/19\/ffmpeg-audio-video-sync\/';
           
-            this.page.identifier = '\/2018\/11\/18\/easy-install-java-on-linux\/'
+            this.page.identifier = '\/2019\/10\/19\/ffmpeg-audio-video-sync\/'
           
         };
         (function() {
