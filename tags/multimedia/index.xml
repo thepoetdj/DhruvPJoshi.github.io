@@ -6,10 +6,20 @@
     <description>Recent content in Multimedia on /home/dhruv-joshi</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 19 Oct 2019 20:39:02 +0530</lastBuildDate>
+    <lastBuildDate>Sun, 24 Nov 2019 18:25:21 +0530</lastBuildDate>
     
 	<atom:link href="https://DhruvPJoshi.github.io/tags/multimedia/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Edit Your Audio Files with aok</title>
+      <link>https://DhruvPJoshi.github.io/2019/11/24/edit-your-audio-files-with-aok/</link>
+      <pubDate>Sun, 24 Nov 2019 18:25:21 +0530</pubDate>
+      
+      <guid>https://DhruvPJoshi.github.io/2019/11/24/edit-your-audio-files-with-aok/</guid>
+      <description>&lt;p&gt;Being a CLI fan, I always wanted to create a command-line utility of my own. I was aiming for a practical application, instead of a tool which does nothing but print something on the console. And the result: &lt;code&gt;aok&lt;/code&gt;
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>FFmpeg Audio Video Sync</title>
